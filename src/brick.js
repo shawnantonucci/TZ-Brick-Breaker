@@ -8,7 +8,7 @@ export default class Brick {
 
     this.position = position;
     this.width = 90;
-    this.height = 30;
+    this.height = 50;
 
     this.markedForDeletion = false;
   }
@@ -16,6 +16,12 @@ export default class Brick {
   update() {
     if (detectCollision(this.game.ball, this)) {
       this.game.ball.speed.y = -this.game.ball.speed.y;
+
+      this.markedForDeletion = true;
+    }
+
+    if (detectCollision(this.game.ball, this)) {
+      this.game.ball.speed.x = this.game.ball.speed.x;
 
       this.markedForDeletion = true;
     }

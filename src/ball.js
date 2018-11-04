@@ -50,8 +50,12 @@ export default class Ball {
     if (detectCollision(this, this.game.paddle)) {
       this.speed.y = -this.speed.y;
       this.position.y = this.game.paddle.position.y - this.size;
-      // this.speed.y--;
-      // this.speed.x++;
+      this.speed.y--;
+      if(this.speed.y = -9) {
+        this.speed.y;
+      }
+      console.log(this.speed.y)
     }
+
   }
 }

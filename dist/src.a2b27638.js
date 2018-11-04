@@ -126,12 +126,12 @@ function () {
 
     this.gameWidth = game.gameWidth;
     this.width = 150;
-    this.height = 20;
-    this.maxSpeed = 10;
+    this.height = 30;
+    this.maxSpeed = 12;
     this.speed = 0;
     this.position = {
       x: game.gameWidth / 2 - this.width / 2,
-      y: game.gameHeight - this.height - 10
+      y: game.gameHeight - this.height - 20
     };
   }
 
@@ -307,8 +307,14 @@ function () {
 
       if ((0, _collisionDetection.detectCollision)(this, this.game.paddle)) {
         this.speed.y = -this.speed.y;
-        this.position.y = this.game.paddle.position.y - this.size; // this.speed.y--;
-        // this.speed.x++;
+        this.position.y = this.game.paddle.position.y - this.size;
+        this.speed.y--;
+
+        if (this.speed.y = -9) {
+          this.speed.y;
+        }
+
+        console.log(this.speed.y);
       }
     }
   }]);
@@ -343,7 +349,7 @@ function () {
     this.game = game;
     this.position = position;
     this.width = 90;
-    this.height = 30;
+    this.height = 50;
     this.markedForDeletion = false;
   }
 
@@ -352,6 +358,11 @@ function () {
     value: function update() {
       if ((0, _collisionDetection.detectCollision)(this.game.ball, this)) {
         this.game.ball.speed.y = -this.game.ball.speed.y;
+        this.markedForDeletion = true;
+      }
+
+      if ((0, _collisionDetection.detectCollision)(this.game.ball, this)) {
+        this.game.ball.speed.x = this.game.ball.speed.x;
         this.markedForDeletion = true;
       }
     }
@@ -373,7 +384,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.buildLevel = buildLevel;
-exports.level4 = exports.level3 = exports.level2 = exports.level1 = void 0;
+exports.level5 = exports.level4 = exports.level3 = exports.level2 = exports.level1 = void 0;
 
 var _brick = _interopRequireDefault(require("/src/brick"));
 
@@ -386,7 +397,7 @@ function buildLevel(game, level) {
       if (brick === 1) {
         var position = {
           x: 80 * brickIndex,
-          y: 75 + 24 * rowIndex
+          y: 75 + 32 * rowIndex
         };
         bricks.push(new _brick.default(game, position));
       }
@@ -397,12 +408,14 @@ function buildLevel(game, level) {
 
 var level1 = [[0, 1, 1, 0, 0, 0, 0, 1, 1, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 exports.level1 = level1;
-var level2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 0, 1, 0, 1, 1, 1, 1], [1, 1, 0, 1, 1, 1, 0, 1, 1, 1], [1, 0, 1, 1, 0, 1, 1, 0, 1, 1]];
+var level2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 0, 1, 0, 1, 1, 1, 1], [1, 1, 0, 1, 1, 1, 0, 1, 1, 1]];
 exports.level2 = level2;
-var level3 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
+var level3 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 exports.level3 = level3;
-var level4 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
+var level4 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 exports.level4 = level4;
+var level5 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
+exports.level5 = level5;
 },{"/src/brick":"src/brick.js"}],"src/game.js":[function(require,module,exports) {
 "use strict";
 
@@ -457,7 +470,7 @@ function () {
     this.gameObjects = [];
     this.bricks = [];
     this.lives = 3;
-    this.levels = [_levels.level1, _levels.level2, _levels.level3, _levels.level4];
+    this.levels = [_levels.level1, _levels.level2, _levels.level3, _levels.level4, _levels.level5];
     this.currentLevel = 0;
     new _input.default(this.paddle, this);
   }
@@ -500,6 +513,13 @@ function () {
       _toConsumableArray(this.gameObjects).concat(_toConsumableArray(this.bricks)).forEach(function (brick) {
         return brick.draw(ctx);
       });
+
+      ctx.font = "30px Ariel";
+      ctx.fillStyle = "black";
+      ctx.fillText("Lives left: ".concat(this.lives), 80, 40);
+      ctx.font = "30px Ariel";
+      ctx.fillStyle = "black";
+      ctx.fillText("Blocks left: ".concat(this.bricks.length), 690, 40);
 
       if (this.gamestate === GAMESTATE.PAUSED) {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
@@ -601,7 +621,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59916" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3341" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
