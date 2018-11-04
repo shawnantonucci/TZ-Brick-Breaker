@@ -125,9 +125,9 @@ function () {
     _classCallCheck(this, Paddle);
 
     this.gameWidth = game.gameWidth;
-    this.width = 100;
+    this.width = 120;
     this.height = 20;
-    this.maxSpeed = 7;
+    this.maxSpeed = 8;
     this.speed = 0;
     this.position = {
       x: game.gameWidth / 2 - this.width / 2,
@@ -224,7 +224,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.detectCollision = detectCollision;
 
 function detectCollision(ball, gameObject) {
-  // check collision with paddle
   var bottomOfBall = ball.position.y + ball.size;
   var topOfBall = ball.position.y;
   var topOfObject = gameObject.position.y;
@@ -342,7 +341,7 @@ function () {
     this.image = document.getElementById("img_brick");
     this.game = game;
     this.position = position;
-    this.width = 85;
+    this.width = 90;
     this.height = 30;
     this.markedForDeletion = false;
   }
@@ -601,7 +600,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53591" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55114" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
