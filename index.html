@@ -1,14 +1,14 @@
 <html>
 
 <head>
-	<title>Shawn's Block Breaker</title>
-	<meta charset="UTF-8" />
-  
+  <title>Shawn's Block Breaker</title>
+  <meta charset="UTF-8" />
+
   <style>
     #gameScreen {
       border: 2px solid black;
     }
-    
+
     img {
       display: none;
     }
@@ -16,12 +16,20 @@
 </head>
 
 <body>
-	<img id="img_ball" src="assets/images/ball.png">
+  <img id="img_ball" src="assets/images/ball.png">
   <img id="img_brick" src="assets/images/brick.png">
-  
-  <canvas id="gameScreen" width="800" height="600" ></canvas>
 
-	<script src="src/index.js"></script>
+  <canvas id="gameScreen" width="800" height="600"></canvas>
+
+  <audio autoplay id="myaudio" loop="loop">
+    <source src="/src/music/Bobber Loop.wav" />
+  </audio>
+
+  <script src="src/index.js"></script>
+  <script>
+    var audio = document.getElementById("myaudio");
+    audio.volume = 0.05;
+  </script>
 </body>
-
+    
 </html>

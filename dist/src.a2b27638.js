@@ -125,9 +125,9 @@ function () {
     _classCallCheck(this, Paddle);
 
     this.gameWidth = game.gameWidth;
-    this.width = 120;
+    this.width = 150;
     this.height = 20;
-    this.maxSpeed = 8;
+    this.maxSpeed = 10;
     this.speed = 0;
     this.position = {
       x: game.gameWidth / 2 - this.width / 2,
@@ -275,7 +275,7 @@ function () {
         y: 400
       };
       this.speed = {
-        x: 6,
+        x: 8,
         y: -5
       };
     }
@@ -307,7 +307,8 @@ function () {
 
       if ((0, _collisionDetection.detectCollision)(this, this.game.paddle)) {
         this.speed.y = -this.speed.y;
-        this.position.y = this.game.paddle.position.y - this.size;
+        this.position.y = this.game.paddle.position.y - this.size; // this.speed.y--;
+        // this.speed.x++;
       }
     }
   }]);
@@ -600,7 +601,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55114" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59111" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
